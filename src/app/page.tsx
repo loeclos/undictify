@@ -2,7 +2,6 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { SplashCursor } from '@/components/ui/splash-cursor';
 import { CrypticClock } from '@/components/cryptic-clock';
-import { CursorTrail } from '@/components/ui/cursor-trail';
 
 export default function LandingPage() {
     return (
@@ -37,7 +36,6 @@ export default function LandingPage() {
             </div>
             
             <SplashCursor />
-            <CursorTrail />
         </main>
     );
 }
