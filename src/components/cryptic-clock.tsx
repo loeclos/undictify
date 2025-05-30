@@ -27,16 +27,14 @@ export function CrypticClock() {
   };
 
   return (
-    <div className="p-8 bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-lg shadow-2xl">
-      <div className="font-mono text-4xl text-zinc-100 tracking-wider">
-        <span className="opacity-50">[</span>
-        {formatTime(time)}
-        <span className="opacity-50">]</span>
-        {' '}
-        <span className="opacity-50">[</span>
-        {getTimezone()}
-        <span className="opacity-50">]</span>
-      </div>
+    <div className="font-mono text-sm text-zinc-500">
+      <span className="opacity-50">[</span>
+      {formatTime(time)}
+      <span className="opacity-50">]</span>
+      {' '}
+      <span className="opacity-50">[</span>
+      {getTimezone()}
+      <span className="opacity-50">]</span>
     </div>
   );
 }
