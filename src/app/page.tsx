@@ -5,9 +5,8 @@ import { CrypticClock } from '@/components/cryptic-clock';
 
 export default function LandingPage() {
     return (
-        <main className="min-h-screen text-foreground flex items-center justify-center px-6 bg-black">
+        <main className="min-h-screen text-foreground flex flex-col items-center justify-center px-6 bg-black relative">
             <section className="text-center max-w-xl space-y-6 z-50">
-                <CrypticClock />
                 <h1 className="text-4xl sm:text-5xl font-bold tracking-tight font-sans text-white">
                     We're Not Quite Ready Yet
                 </h1>
@@ -25,6 +24,17 @@ export default function LandingPage() {
                     </Button>
                 </a>
             </section>
+            
+            <div className="fixed bottom-6 right-6 z-50">
+                <CrypticClock />
+            </div>
+            
+            <div className="fixed bottom-6 left-6 z-50">
+                <p className="font-mono text-zinc-500 text-sm">
+                    © loeclos 2025 all rights reserved
+                </p>
+            </div>
+            
             <SplashCursor />
         </main>
     );
