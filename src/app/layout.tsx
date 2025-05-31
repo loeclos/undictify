@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
-import { SplashCursor } from "@/components/ui/splash-cursor"
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({

@@ -8,10 +8,10 @@ export default function LandingPage() {
         <main className="min-h-screen text-foreground flex flex-col items-center justify-center px-6 bg-black relative">
             <section className="text-center max-w-xl space-y-6 z-50">
                 <h1 className="text-4xl sm:text-5xl font-bold tracking-tight font-sans text-white">
-                    We're Not Quite Ready Yet
+                    We{'\''}re Not Quite Ready Yet
                 </h1>
                 <p className="text-muted text-base sm:text-lg leading-relaxed font-sans">
-                    This site is under construction — but hey, while you're
+                    This site is under construction — but hey, while you{'\''}re
                     here...
                 </p>
                 <a
