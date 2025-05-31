@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-// import { SplashCursor } from '@/components/ui/splash-cursor';
+import { SplashCursor } from '@/components/ui/splash-cursor';
 import { CrypticClock } from '@/components/cryptic-clock';
 
 export default function LandingPage() {
@@ -35,7 +35,7 @@ export default function LandingPage() {
                 </p>
             </div>
             
-            {/* <SplashCursor /> */}
+            <SplashCursor />
         </main>
     );
 }
