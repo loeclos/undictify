@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Space_Grotesk, IBM_Plex_Mono, Merriweather } from 'next/font/google';
+import { Toaster } from "@/components/ui/sonner"
 import './globals.css';
 
 const spaceGrotesk = Space_Grotesk({
@@ -36,6 +37,7 @@ export default function RootLayout({
             <body
                 className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} ${merriweather.variable} antialiased dark`}
             >
+                <Toaster />
                 {children}
             </body>
         </html>

@@ -2,15 +2,11 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import  RightButtons from './right-buttons';
 import {
     Drawer,
-    DrawerClose,
     DrawerContent,
-    DrawerDescription,
     DrawerFooter,
-    DrawerHeader,
-    DrawerTitle,
     DrawerTrigger,
 } from '@/components/ui/drawer';
 import { Menu } from 'lucide-react';
@@ -31,6 +27,7 @@ const Navbar = ({ links }: { links: NavbarLink[] }) => {
     const [hoverPosition, setHoverPosition] = useState({ left: 0, width: 0 });
     const navRef = useRef<HTMLDivElement>(null);
     let lastScrollY: number | null = null;
+    
 
     useEffect(() => {
         lastScrollY = window.pageYOffset;
@@ -88,18 +85,7 @@ const Navbar = ({ links }: { links: NavbarLink[] }) => {
                         ))}
                     </div>
                     <div className="flex justify-center md:justify-end gap-2 py-2 px-4">
-                        <Link
-                            href={'/login'}
-                            className="relative text-black dark:text-white border border-zinc-800 px-3 py-2 rounded-md text-md font-sans font-bold transition-all duration-300 z-10 shadow-sm hover:shadow-[0_0_8px_rgba(255,255,255,0.3)] dark:hover:shadow-[0_0_8px_rgba(255,255,255,0.4)]"
-                        >
-                            Login
-                        </Link>
-                        <Link
-                            href={'/login'}
-                            className="relative overflow-hidden text-black dark:text-white border border-zinc-800 px-3 py-2 rounded-md text-md font-sans font-bold transition-all duration-300 z-10 shadow-sm hover:shadow-[0_0_8px_rgba(255,255,255,0.3)] dark:hover:shadow-[0_0_8px_rgba(255,255,255,0.4)] shine-hover"
-                        >
-                            Sign Up
-                        </Link>
+                        <RightButtons />
                     </div>
                 </div>
                 <div className="p-2 block md:hidden">
