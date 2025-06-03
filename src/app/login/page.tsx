@@ -13,7 +13,6 @@ import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 import { LoginButtons } from './(components)/login-buttons';
 import Link from 'next/link';
-import { revalidatePath } from 'next/cache';
 
 // Server action for email/password login
 async function signInWithEmail(formData: FormData) {
@@ -37,13 +36,12 @@ async function signInWithEmail(formData: FormData) {
         redirect(`/login?error=${encodeURIComponent(error.message)}`);
     }
 
-    revalidatePath('/', 'layout');
     redirect('/dashboard');
 }
 
 export default async function Page({
     className,
-    searchParams,
+    searchParams: { error } = {},
     ...props
 }: React.ComponentProps<'div'> & {
     searchParams?: { error?: string };
@@ -78,9 +76,9 @@ export default async function Page({
                                 </div>
                                 
                                 {/* Display error message if present */}
-                                {searchParams?.error && (
+                                {error && (
                                     <div className="bg-destructive/15 text-destructive text-sm p-3 rounded-md border border-destructive/20">
-                                        {searchParams.error}
+                                        {error}
                                     </div>
                                 )}
                                 
