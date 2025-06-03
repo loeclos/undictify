@@ -47,7 +47,9 @@ export default async function Page({
     searchParams?: { error?: string };
 }) {
     const supabase = await createClient();
-    const error = searchParams?.error;
+
+    // Wait for searchParams to be available
+    const error = (await searchParams)?.error;
 
     const { data: userData, error: userError } = await supabase.auth.getUser();
 
