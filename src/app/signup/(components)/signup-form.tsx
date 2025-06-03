@@ -5,11 +5,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { createClient } from '@/utils/supabase/client';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export default function SignupForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const router = useRouter();
     const supabase = createClient();
 
     const handleSignUp = async (e: React.FormEvent) => {
@@ -27,9 +28,8 @@ export default function SignupForm() {
             console.error('Signup error:', signUpError.message);
         } else {
             console.log('User signed up:', signUpData);
+            router.push('/dashboard');
         }
-        redirect('/dashboard');
-
     };
 
     const handleOAuth = async (provider: 'google' | 'github') => {
