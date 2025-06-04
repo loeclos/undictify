@@ -4,10 +4,9 @@ import { Button } from '@/components/ui/button';
 import { createClient } from '@/utils/supabase/client';
 
 export function LoginButtons() {
-
     const handleGoogleLogin = async () => {
         const supabase = createClient();
-        const { data, error } = await supabase.auth.signInWithOAuth({
+        const { data } = await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
                 redirectTo: 'https://undictify.netlify.app/auth/callback',
@@ -24,7 +23,7 @@ export function LoginButtons() {
     };
     const handleGithubLogin = async () => {
         const supabase = createClient();
-        const { data, error } = await supabase.auth.signInWithOAuth({
+        const { data } = await supabase.auth.signInWithOAuth({
             provider: 'github',
             options: {
                 redirectTo: 'https://undictify.netlify.app/auth/callback',

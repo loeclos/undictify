@@ -15,7 +15,7 @@ export default function SignupForm() {
 
     const handleSignUp = async (e: React.FormEvent) => {
         e.preventDefault();
-        let { data: signUpData, error: signUpError } =
+        const { data: signUpData, error: signUpError } =
             await supabase.auth.signUp({
                 email,
                 password,
@@ -33,7 +33,7 @@ export default function SignupForm() {
     };
 
     const handleOAuth = async (provider: 'google' | 'github') => {
-        const { data, error } = await supabase.auth.signInWithOAuth({
+        const { data } = await supabase.auth.signInWithOAuth({
             provider,
             options: {
                 redirectTo: 'https://undictify.netlify.app/auth/callback',

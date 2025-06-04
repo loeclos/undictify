@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import  RightButtons from './right-buttons';
+import RightButtons from './right-buttons';
 import {
     Drawer,
     DrawerContent,
@@ -10,15 +10,15 @@ import {
     DrawerTrigger,
 } from '@/components/ui/drawer';
 import { Menu } from 'lucide-react';
+
 interface NavbarLink {
     id: string;
     url: string;
     text: string;
 }
-interface HoverEvent extends React.MouseEvent<HTMLElement> {}
 
 interface HandleHover {
-    (e: HoverEvent, link: NavbarLink): void;
+    (e: React.MouseEvent<HTMLElement>, link: NavbarLink): void;
 }
 
 const Navbar = ({ links }: { links: NavbarLink[] }) => {
@@ -26,15 +26,14 @@ const Navbar = ({ links }: { links: NavbarLink[] }) => {
     const [hoveredLink, setHoveredLink] = useState<string | null>(null);
     const [hoverPosition, setHoverPosition] = useState({ left: 0, width: 0 });
     const navRef = useRef<HTMLDivElement>(null);
-    let lastScrollY: number | null = null;
-    
+    const lastScrollY = useRef<number | null>(null);
 
     useEffect(() => {
-        lastScrollY = window.pageYOffset;
+        lastScrollY.current = window.pageYOffset;
         const handleScroll = () => {
             const currentScrollY = window.pageYOffset;
-            setIsVisible(currentScrollY <= (lastScrollY ?? 0));
-            lastScrollY = currentScrollY;
+            setIsVisible(currentScrollY <= (lastScrollY.current ?? 0));
+            lastScrollY.current = currentScrollY;
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -59,7 +58,7 @@ const Navbar = ({ links }: { links: NavbarLink[] }) => {
                     isVisible ? 'translate-y-5' : '-translate-y-full'
                 }`}
             >
-                <div className="hidden  relative md:grid grid-rows-2 md:grid-rows-1 md:grid-cols-2">
+                <div className="hidden relative md:grid grid-rows-2 md:grid-rows-1 md:grid-cols-2">
                     <div className="relative text-left py-4 px-3">
                         {/* Hover background effect */}
                         <div
@@ -90,7 +89,7 @@ const Navbar = ({ links }: { links: NavbarLink[] }) => {
                 </div>
                 <div className="p-2 block md:hidden">
                     <Drawer>
-                        <DrawerTrigger className="flex justify-center items-center z-50 border-2 border-zin-400 w-full h-full p-1 rounded-lg">
+                        <DrawerTrigger className="flex justify-center items-center z-50 border-2 border-zinc-400 w-full h-full p-1 rounded-lg">
                             <Menu />
                         </DrawerTrigger>
                         <DrawerContent>

@@ -1,13 +1,10 @@
-import { cn } from '@/lib/utils';
+import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 import SignupForm from './(components)/signup-form';
 
-export default async function Page({
-  className,
-  ...props
-}: React.ComponentProps<'div'>) {
+export default async function Page() {
   const supabase = await createClient();
   const { data, error } = await supabase.auth.getUser();
 
@@ -21,11 +18,13 @@ export default async function Page({
         <Card className="overflow-hidden p-0">
           <CardContent className="grid p-0 md:grid-cols-2">
             <SignupForm />
-            <div className="bg-muted relative hidden md:block">
-              <img
+            <div className="bg-muted relative hidden md:block h-full w-full">
+              <Image
                 src="/call-to-action.png"
                 alt="Image"
-                className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.8]"
+                fill
+                className="object-cover dark:brightness-[0.8]"
+                priority
               />
             </div>
           </CardContent>
