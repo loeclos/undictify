@@ -117,7 +117,7 @@ const Navbar = ({ links }: { links: NavbarLink[] }) => {
                                     Login
                                 </Link>
                                 <Link
-                                    href={'/login'}
+                                    href={'/signup'}
                                     className="relative text-center overflow-hidden text-black dark:text-white border border-zinc-800 px-3 py-2 rounded-md text-md font-sans font-bold transition-all duration-300 z-10 shadow-sm hover:shadow-[0_0_8px_rgba(255,255,255,0.3)] dark:hover:shadow-[0_0_8px_rgba(255,255,255,0.4)] shine-hover"
                                 >
                                     Sign Up
