@@ -41,12 +41,15 @@ async function signInWithEmail(formData: FormData) {
 
 export default async function Page({
     className,
-    searchParams: { error } = {},
+    searchParams,
     ...props
 }: React.ComponentProps<'div'> & {
     searchParams?: { error?: string };
 }) {
     const supabase = await createClient();
+
+    // Wait for searchParams to be available
+    const error = (await searchParams)?.error;
 
     const { data: userData, error: userError } = await supabase.auth.getUser();
 
