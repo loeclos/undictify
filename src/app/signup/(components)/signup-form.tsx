@@ -20,7 +20,7 @@ export default function SignupForm() {
                 email,
                 password,
                 options: {
-                    emailRedirectTo: 'http://localhost:3000/auth/confirm',
+                    emailRedirectTo: 'https://undictify.netlify.app/auth/confirm',
                 },
             });
 
@@ -36,7 +36,7 @@ export default function SignupForm() {
         const { data, error } = await supabase.auth.signInWithOAuth({
             provider,
             options: {
-                redirectTo: 'http://localhost:3000/auth/callback',
+                redirectTo: 'https://undictify.netlify.app/auth/callback',
                 queryParams: {
                     access_type: 'offline',
                     prompt: 'consent',
