@@ -12,9 +12,8 @@ import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 import { LoginButtons } from './(components)/login-buttons';
 import Link from 'next/link';
-import { type NextPage } from 'next'; // Import NextPage type
 
-// Define the props type using NextPage or a custom interface
+// Define the props type using a custom interface
 interface PageProps {
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }
@@ -44,7 +43,6 @@ async function signInWithEmail(formData: FormData) {
     redirect('/dashboard');
 }
 
-// Use NextPage type or the custom PageProps interface
 export default async function Page({ searchParams }: PageProps) {
     const supabase = await createClient();
     // Await searchParams since it's a Promise
@@ -82,7 +80,7 @@ export default async function Page({ searchParams }: PageProps) {
 
                                 {error && (
                                     <div className="bg-destructive/15 text-destructive text-sm p-3 rounded-md border border-destructive/20">
-                                        {error}
+                                {error}
                                     </div>
                                 )}
 
@@ -115,7 +113,7 @@ export default async function Page({ searchParams }: PageProps) {
                                 </div>
 
                                 <div className="text-center text-sm">
-                                    Don't have an account?{' '}
+                                    Don&apos;t have an account?{' '}
                                     <Link
                                         href="/signup"
                                         className="underline underline-offset-4"
