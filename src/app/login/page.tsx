@@ -38,11 +38,7 @@ async function signInWithEmail(formData: FormData) {
     redirect('/dashboard');
 }
 
-interface PageProps {
-    searchParams?: Record<string, string | string[] | undefined>;
-}
-
-export default async function Page({ searchParams }: PageProps) {
+export default async function Page({ searchParams }: { searchParams?: Record<string, string | string[] | undefined> }) {
     const supabase = await createClient();
     const error = Array.isArray(searchParams?.error)
         ? searchParams.error[0]
