@@ -12,6 +12,12 @@ import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 import { LoginButtons } from './(components)/login-buttons';
 import Link from 'next/link';
+import { type NextPage } from 'next'; // Import NextPage type
+
+// Define the props type using NextPage or a custom interface
+interface PageProps {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+}
 
 // Server action for email/password login
 async function signInWithEmail(formData: FormData) {
@@ -38,11 +44,14 @@ async function signInWithEmail(formData: FormData) {
     redirect('/dashboard');
 }
 
-export default async function Page({ searchParams }: { searchParams?: Record<string, string | string[] | undefined> }) {
+// Use NextPage type or the custom PageProps interface
+export default async function Page({ searchParams }: PageProps) {
     const supabase = await createClient();
-    const error = Array.isArray(searchParams?.error)
-        ? searchParams.error[0]
-        : searchParams?.error;
+    // Await searchParams since it's a Promise
+    const resolvedSearchParams = await searchParams;
+    const error = Array.isArray(resolvedSearchParams?.error)
+        ? resolvedSearchParams.error[0]
+        : resolvedSearchParams?.error;
 
     const { data: userData, error: userError } = await supabase.auth.getUser();
 
@@ -106,7 +115,7 @@ export default async function Page({ searchParams }: { searchParams?: Record<str
                                 </div>
 
                                 <div className="text-center text-sm">
-                                    Don&apos;t have an account?{' '}
+                                    Don't have an account?{' '}
                                     <Link
                                         href="/signup"
                                         className="underline underline-offset-4"
