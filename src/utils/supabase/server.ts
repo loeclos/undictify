@@ -20,7 +20,7 @@ export async function createClient() {
                     cookies.forEach(cookie => {
                         try {
                             cookieStore.set({ name: cookie.name, value: cookie.value, ...(cookie.options || {}) });
-                        } catch (_error) {
+                        } catch {
                             // Handle cookie setting error in server components
                         }
                     });
