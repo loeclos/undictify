@@ -212,33 +212,34 @@ function BlogPostCard({ post, isLoading = false, isListView = false }: { post: a
             layout
             className="h-full"
         >
-            <Card className="group overflow-hidden border-neutral-800 bg-neutral-950 hover:border-neutral-700 transition-all duration-300 hover:shadow-lg hover:shadow-black/20 h-full flex flex-col">
-                <div className="aspect-video overflow-hidden">
+            <Card className="group overflow-hidden border-neutral-800 bg-neutral-950 hover:border-neutral-700 transition-all duration-300 hover:shadow-lg hover:shadow-black/20 h-full flex flex-col relative">
+                <div className="absolute inset-0 overflow-hidden">
                     <Image
                         src={post.image}
                         alt={post.title}
                         width={800}
                         height={400}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-40"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
                 </div>
-                <CardHeader className="space-y-4 flex-1 flex flex-col">
-                    <div className="flex items-center gap-2">
+                <CardHeader className="relative z-10 space-y-3 flex-1 flex flex-col justify-end text-white p-4">
+                    <div className="flex items-center gap-2 mb-2">
                         <Tag className="w-4 h-4 text-neutral-400" />
-                        <Badge variant="secondary" className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700">
+                        <Badge variant="secondary" className="bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm">
                             {post.category}
                         </Badge>
                     </div>
                     
-                    <h3 className="text-xl font-semibold text-white group-hover:text-neutral-200 transition-colors line-clamp-2">
+                    <h3 className="text-lg font-bold text-white group-hover:text-neutral-200 transition-colors line-clamp-2 leading-tight">
                         {post.title}
                     </h3>
                     
-                    <p className="text-neutral-400 text-sm leading-relaxed line-clamp-3 flex-1">
+                    <p className="text-neutral-300 text-sm leading-relaxed line-clamp-2 opacity-90">
                         {post.excerpt}
                     </p>
                     
-                    <div className="flex items-center gap-4 text-xs text-neutral-500">
+                    <div className="flex items-center gap-3 text-xs text-neutral-300 mt-2">
                         <span className="flex items-center gap-1">
                             <Calendar className="w-3 h-3" />
                             {new Date(post.publishedAt).toLocaleDateString('en-US', { 
@@ -253,12 +254,12 @@ function BlogPostCard({ post, isLoading = false, isListView = false }: { post: a
                         </span>
                     </div>
                     
-                    <div className="flex flex-wrap gap-1 mt-auto">
+                    <div className="flex flex-wrap gap-1 mt-3">
                         {post.tags.map((tag: string) => (
                             <Badge 
                                 key={tag} 
                                 variant="outline" 
-                                className="text-xs border-neutral-700 text-neutral-400 hover:border-neutral-600 hover:text-neutral-300"
+                                className="text-xs border-white/30 text-white/80 hover:border-white/50 hover:text-white bg-white/10 backdrop-blur-sm"
                             >
                                 {tag}
                             </Badge>
@@ -268,6 +269,34 @@ function BlogPostCard({ post, isLoading = false, isListView = false }: { post: a
             </Card>
         </motion.div>
     );
+}
+
+// Function to determine bento grid classes for different sized items
+function getBentoClass(index: number): string {
+    const patterns = [
+        // Large featured item
+        "md:col-span-2 md:row-span-2 lg:col-span-3 lg:row-span-2",
+        // Medium item
+        "md:col-span-2 lg:col-span-2",
+        // Small item
+        "md:col-span-1 lg:col-span-1",
+        // Medium wide item
+        "md:col-span-2 lg:col-span-3",
+        // Small items
+        "md:col-span-1 lg:col-span-1",
+        "md:col-span-1 lg:col-span-2",
+        // Tall item
+        "md:col-span-1 md:row-span-2 lg:col-span-2 lg:row-span-2",
+        // Wide item
+        "md:col-span-2 lg:col-span-4",
+        // Regular items
+        "md:col-span-1 lg:col-span-2",
+        "md:col-span-1 lg:col-span-1",
+        "md:col-span-2 lg:col-span-2",
+        "md:col-span-1 lg:col-span-3"
+    ];
+    
+    return patterns[index % patterns.length];
 }
 
 export default function BlogPage() {
@@ -406,16 +435,28 @@ export default function BlogPage() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.3 }}
-                                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr"
+                                className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 auto-rows-[200px]"
                             >
                                 <AnimatePresence mode="wait">
                                     {isLoading ? (
-                                        Array.from({ length: 6 }).map((_, index) => (
-                                            <BlogPostSkeleton key={index} isListView={false} />
+                                        Array.from({ length: 6 }).map((_, index) => {
+                                            const bentoClass = getBentoClass(index);
+                                            return (
+                                                <div key={index} className={bentoClass}>
+                                                    <BlogPostSkeleton isListView={false} />
+                                                </div>
+                                            );
+                                        })
                                         ))
                                     ) : (
-                                        paginatedPosts.map((post) => (
-                                            <BlogPostCard key={post.id} post={post} isListView={false} />
+                                        paginatedPosts.map((post, index) => {
+                                            const bentoClass = getBentoClass(index);
+                                            return (
+                                                <div key={post.id} className={bentoClass}>
+                                                    <BlogPostCard post={post} isListView={false} />
+                                                </div>
+                                            );
+                                        })
                                         ))
                                     )}
                                 </AnimatePresence>
