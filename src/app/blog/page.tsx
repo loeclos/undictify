@@ -94,13 +94,18 @@ function BlogPostSkeleton({ isListView = false }: { isListView?: boolean }) {
                 className="flex gap-4 py-6 px-4 -mx-4"
             >
                 <div className="flex-shrink-0">
-                    <Skeleton className="w-24 h-16 bg-neutral-800 rounded-lg" />
+                    <Skeleton className="w-24 h-20 bg-neutral-800 rounded-lg" />
                 </div>
                 <div className="flex-1 space-y-2">
                     <Skeleton className="w-3/4 h-5 bg-neutral-800" />
                     <Skeleton className="w-1/3 h-4 bg-neutral-800" />
                     <Skeleton className="w-full h-4 bg-neutral-800" />
                     <Skeleton className="w-5/6 h-4 bg-neutral-800" />
+                    <div className="flex gap-2 pt-1">
+                        <Skeleton className="w-16 h-5 bg-neutral-800 rounded-full" />
+                        <Skeleton className="w-20 h-5 bg-neutral-800 rounded-full" />
+                        <Skeleton className="w-14 h-5 bg-neutral-800 rounded-full" />
+                    </div>
                     </div>
             </motion.div>
         );
@@ -151,13 +156,13 @@ function BlogPostCard({ post, isLoading = false, isListView = false }: { post: a
                 transition={{ duration: 0.3 }}
                 className="group flex gap-4 py-6 hover:bg-neutral-950/50 transition-colors duration-300 rounded-lg px-4 -mx-4"
             >
-                <div className="flex-shrink-0">
-                    <div className="w-24 h-16 overflow-hidden rounded-lg">
+                <div className="flex-shrink-0 self-start">
+                    <div className="w-24 h-20 overflow-hidden rounded-lg">
                             <Image
                                 src={post.image}
                                 alt={post.title}
                                 width={96}
-                                height={64}
+                                height={80}
                                 className="w-full h-full object-cover"
                             />
                     </div>
@@ -180,6 +185,18 @@ function BlogPostCard({ post, isLoading = false, isListView = false }: { post: a
                         <p className="text-neutral-400 text-sm leading-relaxed line-clamp-2">
                             {post.excerpt}
                         </p>
+                        
+                        <div className="flex flex-wrap gap-1 pt-1">
+                            {post.tags.map((tag: string) => (
+                                <Badge 
+                                    key={tag} 
+                                    variant="outline" 
+                                    className="text-xs border-neutral-700 text-neutral-400 hover:border-neutral-600 hover:text-neutral-300"
+                                >
+                                    {tag}
+                                </Badge>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </motion.article>
