@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
-import { Space_Grotesk, IBM_Plex_Mono, Merriweather } from 'next/font/google';
-import { Toaster } from "@/components/ui/sonner"
+import {
+    Space_Grotesk,
+    IBM_Plex_Mono,
+    DM_Sans,
+} from 'next/font/google';
+import { Toaster } from '@/components/ui/sonner';
 import './globals.css';
 
 const spaceGrotesk = Space_Grotesk({
@@ -14,18 +18,16 @@ const ibmPlexMono = IBM_Plex_Mono({
     weight: ['100', '200', '300', '400', '500', '600', '700'],
 });
 
-const merriweather = Merriweather({
-    variable: '--font-merriweather',
+const dm_sans = DM_Sans({
+    variable: '--font-dm-sans',
     subsets: ['latin'],
-    weight: ['300', '400', '700', '900'],
+    weight: ['100', '200', '300', '400', '500', '600', '700'],
 });
 
 export const metadata: Metadata = {
     title: 'Undictify',
     description: 'The best app to help you lock out of doom scrolling.',
 };
-
-
 
 export default function RootLayout({
     children,
@@ -35,7 +37,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} ${merriweather.variable} antialiased dark`}
+                className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} ${dm_sans.variable} antialiased dark`}
             >
                 <Toaster />
                 {children}

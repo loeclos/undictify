@@ -4,7 +4,7 @@ import { MoveRight, LayoutDashboard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-function Hero() {
+function Hero({ isSignedIn }: { isSignedIn: boolean }) {
     const [titleNumber, setTitleNumber] = useState(0);
     const titles = useMemo(
         () => ['amazing', 'new', 'wonderful', 'beautiful', 'smart'],
@@ -69,8 +69,12 @@ function Hero() {
                             </span>
                         </h1>
 
-                        <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center">
-                            
+                        <p className="text-lg md:text-md leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center font-serif">
+                            Undictify is the social media un-addictor — a fresh
+                            approach to helping you take back control.
+                            Thoughtfully designed to shift your relationship
+                            with digital life, it’s not just another app — it’s
+                            a quiet rebellion.
                         </p>
                     </div>
                     <div className="flex flex-row gap-3">
@@ -78,11 +82,17 @@ function Hero() {
                             Go to dashboard{' '}
                             <LayoutDashboard className="w-4 h-4" />
                         </Button>
-                        <Link href={'/signup'}>
-                            <Button size="lg" className="gap-4 cursor-pointer">
-                                Sign up here <MoveRight className="w-4 h-4" />
-                            </Button>
-                        </Link>
+                        {isSignedIn ? (
+                            <Link href={'/signup'}>
+                                <Button
+                                    size="lg"
+                                    className="gap-4 cursor-pointer"
+                                >
+                                    Sign up here{' '}
+                                    <MoveRight className="w-4 h-4" />
+                                </Button>
+                            </Link>
+                        ) : null}
                     </div>
                 </div>
             </div>
