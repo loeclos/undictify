@@ -91,29 +91,17 @@ function BlogPostSkeleton({ isListView = false }: { isListView?: boolean }) {
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="border-b border-neutral-800 pb-6 mb-6 last:border-b-0"
+                className="flex gap-4 py-6 px-4 -mx-4"
             >
-                <div className="flex gap-6">
-                    <div className="flex-shrink-0">
-                        <Skeleton className="w-32 h-20 bg-neutral-800 rounded-lg" />
-                    </div>
-                    <div className="flex-1 space-y-3">
-                        <div className="flex items-center gap-2">
-                            <Skeleton className="w-4 h-4 bg-neutral-800" />
-                            <Skeleton className="w-20 h-4 bg-neutral-800" />
-                        </div>
-                        <Skeleton className="w-full h-6 bg-neutral-800" />
-                        <Skeleton className="w-full h-12 bg-neutral-800" />
-                        <div className="flex items-center gap-4">
-                            <Skeleton className="w-16 h-4 bg-neutral-800" />
-                            <Skeleton className="w-16 h-4 bg-neutral-800" />
-                        </div>
-                        <div className="flex gap-2">
-                            <Skeleton className="w-16 h-6 bg-neutral-800 rounded-full" />
-                            <Skeleton className="w-20 h-6 bg-neutral-800 rounded-full" />
-                        </div>
-                    </div>
+                <div className="flex-shrink-0">
+                    <Skeleton className="w-24 h-16 bg-neutral-800 rounded-lg" />
                 </div>
+                <div className="flex-1 space-y-2">
+                    <Skeleton className="w-3/4 h-5 bg-neutral-800" />
+                    <Skeleton className="w-1/3 h-4 bg-neutral-800" />
+                    <Skeleton className="w-full h-4 bg-neutral-800" />
+                    <Skeleton className="w-5/6 h-4 bg-neutral-800" />
+                    </div>
             </motion.div>
         );
     }
@@ -161,62 +149,37 @@ function BlogPostCard({ post, isLoading = false, isListView = false }: { post: a
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.3 }}
-                className="group border-b border-neutral-800 pb-6 mb-6 last:border-b-0 hover:border-neutral-700 transition-colors duration-300"
+                className="group flex gap-4 py-6 hover:bg-neutral-950/50 transition-colors duration-300 rounded-lg px-4 -mx-4"
             >
-                <div className="flex gap-6">
-                    <div className="flex-shrink-0">
-                        <div className="w-32 h-20 overflow-hidden rounded-lg">
+                <div className="flex-shrink-0">
+                    <div className="w-24 h-16 overflow-hidden rounded-lg">
                             <Image
                                 src={post.image}
                                 alt={post.title}
-                                width={128}
-                                height={80}
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                width={96}
+                                height={64}
+                                className="w-full h-full object-cover"
                             />
-                        </div>
                     </div>
-                    <div className="flex-1 space-y-3">
-                        <div className="flex items-center gap-2">
-                            <Tag className="w-4 h-4 text-neutral-400" />
-                            <Badge variant="secondary" className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700">
-                                {post.category}
-                            </Badge>
-                        </div>
-                        
-                        <h3 className="text-xl font-semibold text-white group-hover:text-neutral-200 transition-colors line-clamp-2">
+                </div>
+                
+                <div className="flex-1 min-w-0">
+                    <div className="space-y-2">
+                        <h3 className="text-lg font-semibold text-white group-hover:text-neutral-200 transition-colors line-clamp-2 leading-tight">
                             {post.title}
                         </h3>
+                        
+                        <p className="text-neutral-500 text-sm">
+                            Published on {new Date(post.publishedAt).toLocaleDateString('en-US', { 
+                                month: 'long', 
+                                day: 'numeric', 
+                                year: 'numeric' 
+                            })}
+                        </p>
                         
                         <p className="text-neutral-400 text-sm leading-relaxed line-clamp-2">
                             {post.excerpt}
                         </p>
-                        
-                        <div className="flex items-center gap-4 text-xs text-neutral-500">
-                            <span className="flex items-center gap-1">
-                                <Calendar className="w-3 h-3" />
-                                {new Date(post.publishedAt).toLocaleDateString('en-US', { 
-                                    month: 'short', 
-                                    day: 'numeric', 
-                                    year: 'numeric' 
-                                })}
-                            </span>
-                            <span className="flex items-center gap-1">
-                                <Clock className="w-3 h-3" />
-                                {post.readingTime}
-                            </span>
-                        </div>
-                        
-                        <div className="flex flex-wrap gap-1">
-                            {post.tags.map((tag: string) => (
-                                <Badge 
-                                    key={tag} 
-                                    variant="outline" 
-                                    className="text-xs border-neutral-700 text-neutral-400 hover:border-neutral-600 hover:text-neutral-300"
-                                >
-                                    {tag}
-                                </Badge>
-                            ))}
-                        </div>
                     </div>
                 </div>
             </motion.article>
@@ -399,6 +362,9 @@ export default function BlogPage() {
                                 transition={{ duration: 0.3 }}
                                 className="max-w-4xl mx-auto"
                             >
+                                <div className="mb-8">
+                                    <h2 className="text-2xl font-bold text-white mb-6">Latest Stories</h2>
+                                </div>
                                 <AnimatePresence mode="wait">
                                     {isLoading ? (
                                         <div className="space-y-6">
@@ -407,7 +373,7 @@ export default function BlogPage() {
                                             ))}
                                         </div>
                                     ) : (
-                                        <div className="space-y-0">
+                                        <div className="space-y-1">
                                             {paginatedPosts.map((post) => (
                                                 <BlogPostCard key={post.id} post={post} isListView={true} />
                                             ))}
