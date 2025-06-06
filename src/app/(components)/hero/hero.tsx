@@ -25,7 +25,7 @@ function Hero() {
     return (
         <div className="w-full font-sans">
             <div className="container mx-auto">
-                <div className="flex gap-8 mt-20 lg:pt-40 items-center justify-center flex-col">
+                <div className="flex gap-8 mt-20 lg:pt-32 items-center justify-center flex-col">
                     <div>
                         <Button variant="secondary" size="sm" className="gap-4">
                             Read our launch article{' '}
