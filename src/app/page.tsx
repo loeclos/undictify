@@ -16,7 +16,7 @@ export default function Page() {
     return (
         <>
             <Navbar links={navItems} />
-            <main className="min-h-screen text-foreground flex flex-col items-center justify-center px-6 bg-black relative pb-32">
+            <main className="min-h-screen text-foreground flex flex-col items-center justify-center px-6 bg-black relative">
                 <section className="text-center max-w-xl space-y-6">
                     <Hero/>
                 </section>

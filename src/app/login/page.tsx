@@ -58,7 +58,7 @@ export default async function Page({ searchParams }: PageProps) {
     }
 
     return (
-        <div className="flex px-3 h-screen bg-black font-mono items-center justify-center pb-32">
+        <div className="flex px-3 h-screen bg-black font-mono items-center justify-center">
             <div className="flex flex-col gap-6">
                 <Card className="bg-background">
                     <CardHeader className="text-center">
