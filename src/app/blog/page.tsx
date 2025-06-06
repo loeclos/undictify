@@ -210,8 +210,9 @@ function BlogPostCard({ post, isLoading = false, isListView = false }: { post: a
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.3 }}
             layout
+            className="h-full"
         >
-            <Card className="group overflow-hidden border-neutral-800 bg-neutral-950 hover:border-neutral-700 transition-all duration-300 hover:shadow-lg hover:shadow-black/20">
+            <Card className="group overflow-hidden border-neutral-800 bg-neutral-950 hover:border-neutral-700 transition-all duration-300 hover:shadow-lg hover:shadow-black/20 h-full flex flex-col">
                 <div className="aspect-video overflow-hidden">
                     <Image
                         src={post.image}
@@ -221,7 +222,7 @@ function BlogPostCard({ post, isLoading = false, isListView = false }: { post: a
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                 </div>
-                <CardHeader className="space-y-4">
+                <CardHeader className="space-y-4 flex-1 flex flex-col">
                     <div className="flex items-center gap-2">
                         <Tag className="w-4 h-4 text-neutral-400" />
                         <Badge variant="secondary" className="bg-neutral-800 text-neutral-300 hover:bg-neutral-700">
@@ -233,7 +234,7 @@ function BlogPostCard({ post, isLoading = false, isListView = false }: { post: a
                         {post.title}
                     </h3>
                     
-                    <p className="text-neutral-400 text-sm leading-relaxed line-clamp-3">
+                    <p className="text-neutral-400 text-sm leading-relaxed line-clamp-3 flex-1">
                         {post.excerpt}
                     </p>
                     
@@ -252,7 +253,7 @@ function BlogPostCard({ post, isLoading = false, isListView = false }: { post: a
                         </span>
                     </div>
                     
-                    <div className="flex flex-wrap gap-1">
+                    <div className="flex flex-wrap gap-1 mt-auto">
                         {post.tags.map((tag: string) => (
                             <Badge 
                                 key={tag} 
@@ -405,7 +406,7 @@ export default function BlogPage() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.3 }}
-                                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr"
                             >
                                 <AnimatePresence mode="wait">
                                     {isLoading ? (
