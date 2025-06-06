@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const Dashboard: React.FC = () => {
     return (
-        <div className="min-h-screen p-6 font-sans">
+        <div className="min-h-screen p-6 font-sans pb-32">
             <div className="max-w-7xl mx-auto">
                 <h1 className="text-3xl font-bold  text-white mb-6">
                     Dashboard

@@ -13,7 +13,7 @@ export default async function Page() {
   }
 
   return (
-    <div className="flex px-3 h-screen bg-black font-mono items-center justify-center">
+    <div className="flex px-3 h-screen bg-black font-mono items-center justify-center pb-32">
       <div className="flex flex-col gap-6">
         <Card className="overflow-hidden p-0">
           <CardContent className="grid p-0 md:grid-cols-2">
