@@ -106,7 +106,7 @@ function BlogPostSkeleton({ isListView = false }: { isListView?: boolean }) {
                         <Skeleton className="w-20 h-5 bg-neutral-800 rounded-full" />
                         <Skeleton className="w-14 h-5 bg-neutral-800 rounded-full" />
                     </div>
-                    </div>
+                </div>
             </motion.div>
         );
     }
@@ -447,7 +447,6 @@ export default function BlogPage() {
                                                 </div>
                                             );
                                         })
-                                        ))
                                     ) : (
                                         paginatedPosts.map((post, index) => {
                                             const bentoClass = getBentoClass(index);
@@ -457,7 +456,6 @@ export default function BlogPage() {
                                                 </div>
                                             );
                                         })
-                                        ))
                                     )}
                                 </AnimatePresence>
                             </motion.div>
