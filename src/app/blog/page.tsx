@@ -305,7 +305,7 @@ export default function BlogPage() {
             <div className="min-h-screen bg-black text-white flex flex-col">
                 <main className="flex-1 container mx-auto px-6 py-24">
                     {/* Header */}
-                    <div className="text-center mb-16 font-sans">
+                    <div className="text-center pt-20 mb-16 font-sans">
                         <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
                             Digital Wellness
                             <span className="block text-neutral-400 text-2xl md:text-3xl font-normal mt-2">
