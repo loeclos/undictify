@@ -317,7 +317,7 @@ export default function BlogPage() {
                     </div>
 
                     {/* Search and Filters */}
-                    <div className="mb-12 space-y-6">
+                    <div className="mb-12 space-y-6 font-mono">
                         <div className="relative max-w-md mx-auto">
                             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-4 h-4" />
                             <Input
@@ -352,7 +352,7 @@ export default function BlogPage() {
                     </div>
 
                     {/* View Mode Tabs */}
-                    <Tabs value={viewMode} onValueChange={setViewMode} className="w-full">
+                    <Tabs value={viewMode} onValueChange={setViewMode} className="w-full font-serif">
                         <div className="flex justify-center mb-8">
                             <TabsList className="bg-neutral-900 border border-neutral-800">
                                 <TabsTrigger 
