@@ -4,7 +4,7 @@ import { MoveRight, LayoutDashboard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-function Hero({ isSignedIn }: { isSignedIn: boolean }) {
+function Hero() {
     const [titleNumber, setTitleNumber] = useState(0);
     const titles = useMemo(
         () => ['amazing', 'new', 'wonderful', 'beautiful', 'smart'],
@@ -78,21 +78,22 @@ function Hero({ isSignedIn }: { isSignedIn: boolean }) {
                         </p>
                     </div>
                     <div className="flex flex-row gap-3">
-                        <Button size="lg" className="gap-4" variant="outline">
-                            Go to dashboard{' '}
-                            <LayoutDashboard className="w-4 h-4" />
-                        </Button>
-                        {isSignedIn ? (
-                            <Link href={'/signup'}>
-                                <Button
-                                    size="lg"
-                                    className="gap-4 cursor-pointer"
-                                >
-                                    Sign up here{' '}
-                                    <MoveRight className="w-4 h-4" />
-                                </Button>
-                            </Link>
-                        ) : null}
+                        <Link href={'/dashboard'}>
+                            <Button
+                                size="lg"
+                                className="gap-4"
+                                variant="outline"
+                            >
+                                Go to dashboard{' '}
+                                <LayoutDashboard className="w-4 h-4" />
+                            </Button>
+                        </Link>
+
+                        <Link href={'/signup'}>
+                            <Button size="lg" className="gap-4 cursor-pointer">
+                                Sign up here <MoveRight className="w-4 h-4" />
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </div>
