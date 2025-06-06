@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import RightButtons from './right-buttons';
 import {
     Drawer,
@@ -58,7 +59,7 @@ const Navbar = ({ links }: { links: NavbarLink[] }) => {
                     isVisible ? 'translate-y-5' : '-translate-y-full'
                 }`}
             >
-                <div className="hidden relative md:grid grid-rows-2 md:grid-rows-1 md:grid-cols-2">
+                <div className="hidden relative md:grid grid-rows-2 md:grid-rows-1 md:grid-cols-3">
                     <div className="relative text-left py-4 px-3">
                         {/* Hover background effect */}
                         <div
@@ -83,6 +84,24 @@ const Navbar = ({ links }: { links: NavbarLink[] }) => {
                             </Link>
                         ))}
                     </div>
+                    
+                    <div className="flex justify-center items-center py-2">
+                        <Link 
+                            href="https://bolt.new" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center hover:opacity-80 transition-opacity duration-200"
+                        >
+                            <Image
+                                src="/white_circle_360x360.png"
+                                alt="Powered by Bolt"
+                                width={32}
+                                height={32}
+                                className="rounded-full"
+                            />
+                        </Link>
+                    </div>
+                    
                     <div className="flex justify-center md:justify-end gap-2 py-2 px-4">
                         <RightButtons />
                     </div>
@@ -94,6 +113,22 @@ const Navbar = ({ links }: { links: NavbarLink[] }) => {
                         </DrawerTrigger>
                         <DrawerContent>
                             <DrawerFooter>
+                                <div className="flex justify-center mb-4">
+                                    <Link 
+                                        href="https://bolt.new" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="flex items-center justify-center hover:opacity-80 transition-opacity duration-200"
+                                    >
+                                        <Image
+                                            src="/white_circle_360x360.png"
+                                            alt="Powered by Bolt"
+                                            width={40}
+                                            height={40}
+                                            className="rounded-full"
+                                        />
+                                    </Link>
+                                </div>
                                 {links.map((link) => (
                                     <Link
                                         key={link.id}
