@@ -307,7 +307,7 @@ export default function BlogPage() {
                     {/* Header */}
                     <div className="text-center pt-20 mb-16 font-sans">
                         <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-                            Digital Wellness
+                            Undcitfy blog
                             <span className="block text-neutral-400 text-2xl md:text-3xl font-normal mt-2">
                                 Insights & Stories
                             </span>
