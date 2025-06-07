@@ -32,7 +32,7 @@ export default function Footer() {
                     </Link>
                 </div>
 
-                <div className="flex w-full items-center md:items-end justify-center md:justify-end">
+                <div className="hidden md:flex w-full items-center md:items-end justify-center md:justify-end">
                     <CrypticClock />
                 </div>
             </div>
