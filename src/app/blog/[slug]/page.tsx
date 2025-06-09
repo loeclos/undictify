@@ -31,7 +31,7 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <main className="font-serif flex justify-center px-4 py-12 relative">
       {/* Bolt Logo */}
-      <div className="fixed top-6 right-6 z-50">
+      <div className="fixed top-6 right-6 sm:top-6 sm:right-6 bottom-6 right-6 sm:bottom-auto z-50">
         <Link 
           href="https://bolt.new" 
           target="_blank" 
@@ -41,8 +41,8 @@ export default async function BlogPostPage({ params }: Props) {
           <Image
             src="/white_circle_360x360.png"
             alt="Powered by Bolt"
-            width={48}
-            height={48}
+            width={32}
+            height={32}
             className="rounded-full group-hover:animate-spin transition-transform duration-200"
             style={{ animationDuration: '2s' }}
           />
