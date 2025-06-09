@@ -14,7 +14,7 @@ export default function BlogIndexPage() {
   return (
     <main className="font-serif max-w-3xl mx-auto p-6 sm:p-8 relative">
       {/* Bolt Logo */}
-      <div className="fixed top-6 right-6 sm:top-6 sm:right-6 bottom-6 right-6 sm:bottom-auto z-50">
+      <div className="fixed bottom-6 right-6 z-50">
         <Link 
           href="https://bolt.new" 
           target="_blank" 
@@ -26,7 +26,7 @@ export default function BlogIndexPage() {
             alt="Powered by Bolt"
             width={32}
             height={32}
-            className="rounded-full group-hover:animate-spin transition-transform duration-200"
+            className="rounded-full group-hover:animate-spin transition-transform duration-200 sm:w-12 sm:h-12"
             style={{ animationDuration: '2s' }}
           />
         </Link>
