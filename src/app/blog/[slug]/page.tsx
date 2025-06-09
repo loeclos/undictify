@@ -41,8 +41,8 @@ export default async function BlogPostPage({ params }: Props) {
           <Image
             src="/white_circle_360x360.png"
             alt="Powered by Bolt"
-            width={32}
-            height={32}
+            width={48}
+            height={48}
             className="rounded-full"
           />
         </Link>
