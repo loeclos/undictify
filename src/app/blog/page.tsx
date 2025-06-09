@@ -26,7 +26,8 @@ export default function BlogIndexPage() {
             alt="Powered by Bolt"
             width={48}
             height={48}
-            className="rounded-full"
+            className="rounded-full animate-spin"
+            style={{ animationDuration: '10s' }}
           />
         </Link>
       </div>
