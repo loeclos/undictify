@@ -9,7 +9,7 @@ import { CalendarDays } from 'lucide-react';
 import { format } from 'date-fns';
 
 interface PageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -19,14 +19,16 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { frontmatter } = await getPostContent(params.slug);
+  const { slug } = await params;
+  const { frontmatter } = await getPostContent(slug);
   return {
     title: frontmatter?.title || 'Blog Post',
   };
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
-  const { htmlContent, frontmatter } = await getPostContent(params.slug);
+  const { slug } = await params;
+  const { htmlContent, frontmatter } = await getPostContent(slug);
 
   if (!frontmatter) return notFound();
 
