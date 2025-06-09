@@ -45,15 +45,20 @@ export default function BlogIndexPage() {
               </CardContent>
 
               <CardFooter className="pt-0">
-                <Link href={`/blog/${slug}`} passHref legacyBehavior>
+                <Link 
+                  href={`/blog/${slug}`}
+                  className="gap-1"
+                  aria-label={`Read full post: ${frontmatter.title}`}
+                >
                   <Button
                     size="sm"
                     variant="link"
-                    className="gap-1"
-                    aria-label={`Read full post: ${frontmatter.title}`}
+                    asChild
                   >
-                    Read more
-                    <ChevronRightIcon className="w-4 h-4" aria-hidden="true" />
+                    <span>
+                      Read more
+                      <ChevronRightIcon className="w-4 h-4" aria-hidden="true" />
+                    </span>
                   </Button>
                 </Link>
               </CardFooter>
