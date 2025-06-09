@@ -8,21 +8,27 @@ import { Separator } from '@/components/ui/separator';
 import { CalendarDays } from 'lucide-react';
 import { format } from 'date-fns';
 
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
+
 export async function generateStaticParams() {
   return getPostSlugs().map((filename) => ({
     slug: filename.replace(/\.md$/, ''),
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const { frontmatter } = await getPostContent(params.slug);
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const { frontmatter } = await getPostContent(slug);
   return {
     title: frontmatter?.title || 'Blog Post',
   };
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const { htmlContent, frontmatter } = await getPostContent(params.slug);
+export default async function BlogPostPage({ params }: PageProps) {
+  const { slug } = await params;
+  const { htmlContent, frontmatter } = await getPostContent(slug);
 
   if (!frontmatter) return notFound();
 
