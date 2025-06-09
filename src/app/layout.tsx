@@ -37,7 +37,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} ${dm_sans.variable} antialiased dark selection:bg-zinc-800 selection:text-zinc-600 bg-black`}
+                className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} ${dm_sans.variable} antialiased dark selection:bg-zinc-800 selection:text-zinc-500 bg-black`}
             >
                 <Toaster />
                 {children}
