@@ -42,7 +42,7 @@ export default function BlogIndexPage() {
       <ul className="space-y-8">
         {posts.map(({ slug, frontmatter }) => (
           <li key={slug}>
-            <Card className="hover:shadow-lg rounded-3xl transition-shadow duration-300 dark:bg-neutral-900">
+            <Card className="hover:shadow-lg rounded-3xl transition-shadow duration-300 dark:bg-neutral-950">
               <CardHeader>
                 <CardTitle>
                   <Link
