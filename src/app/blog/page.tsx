@@ -1,5 +1,6 @@
 // app/blog/page.tsx
 import Link from 'next/link';
+import Image from 'next/image';
 import { getAllPosts } from '@/lib/posts';
 
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -11,7 +12,25 @@ export default function BlogIndexPage() {
   const posts = getAllPosts();
 
   return (
-    <main className="font-serif max-w-3xl mx-auto p-6 sm:p-8">
+    <main className="font-serif max-w-3xl mx-auto p-6 sm:p-8 relative">
+      {/* Bolt Logo */}
+      <div className="fixed top-6 right-6 z-50">
+        <Link 
+          href="https://bolt.new" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-200"
+        >
+          <Image
+            src="/white_circle_360x360.png"
+            alt="Powered by Bolt"
+            width={32}
+            height={32}
+            className="rounded-full"
+          />
+        </Link>
+      </div>
+
       <header className="mb-10 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
           Undictify Blog
