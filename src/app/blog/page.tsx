@@ -19,15 +19,15 @@ export default function BlogIndexPage() {
           href="https://bolt.new" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-200"
+          className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-200 group"
         >
           <Image
             src="/white_circle_360x360.png"
             alt="Powered by Bolt"
             width={48}
             height={48}
-            className="rounded-full animate-spin"
-            style={{ animationDuration: '10s' }}
+            className="rounded-full group-hover:animate-spin transition-transform duration-200"
+            style={{ animationDuration: '2s' }}
           />
         </Link>
       </div>
