@@ -4,6 +4,8 @@ import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 import SignupForm from './(components)/signup-form';
 
+export const dynamic = 'force-dynamic';
+
 export default async function Page() {
   const supabase = await createClient();
   const { data, error } = await supabase.auth.getUser();

@@ -13,6 +13,8 @@ import { redirect } from 'next/navigation';
 import { LoginButtons } from './(components)/login-buttons';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 // Define the props type using a custom interface
 interface PageProps {
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
