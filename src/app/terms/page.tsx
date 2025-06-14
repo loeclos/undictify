@@ -57,7 +57,7 @@ export default function TermsPage() {
                                     4. Disclaimer of Liability
                                 </h2>
                                 <p>
-                                    Undictify is provided “as is” without
+                                    Undictify is provided &quot;as is&quot; without
                                     warranties of any kind. We are not
                                     responsible or liable for any harm, loss,
                                     inconvenience, or damages—direct or
@@ -71,7 +71,7 @@ export default function TermsPage() {
                                 </h2>
                                 <p>
                                     We may update these Terms from time to time.
-                                    If we do, we'll notify users through the app
+                                    If we do, we&apos;ll notify users through the app
                                     or via email. Continuing to use Undictify
                                     after changes are made means you accept the
                                     revised Terms.
@@ -83,7 +83,7 @@ export default function TermsPage() {
                                 </h2>
                                 <p>
                                     If you have any questions about these Terms,
-                                    please contact us at{' '}
+                                    please contact us at 
                                     <a
                                         href="mailto:support@example.com"
                                         className="text-indigo-700 underline"
@@ -100,3 +100,4 @@ export default function TermsPage() {
         </div>
     );
 }
+
