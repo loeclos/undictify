@@ -1,5 +1,3 @@
-'use client';
-
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
@@ -95,3 +93,10 @@ export default function PrivacyPage() {
         </div>
     );
 }
+
+
+// Add metadata export
+export const metadata = {
+    title: 'Privacy Policy | Undictify',
+    description: 'Privacy Policy for Undictify - Your Digital Wellbeing Companion'
+};

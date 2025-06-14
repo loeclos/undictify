@@ -101,3 +101,8 @@ export default function TermsPage() {
     );
 }
 
+// Add metadata export
+export const metadata = {
+    title: 'Privacy Policy | Undictify',
+    description: 'Terms and Conditions for Undictify - Your Digital Wellbeing Companion'
+};
