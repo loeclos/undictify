@@ -67,7 +67,18 @@ export default function TermsPage() {
                             </div>
                             <div>
                                 <h2 className="text-xl font-semibold text-zinc-300 mb-1">
-                                    5. Modifications to the Terms
+                                    5. Email Notifications
+                                </h2>
+                                <p>
+                                    We may send emails to our customers to notify them of changes 
+                                    to our service, important updates, or other relevant information.
+                                    By using Undictify, you consent to receive these communications.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h2 className="text-xl font-semibold text-zinc-300 mb-1">
+                                    6. Modifications to the Terms
                                 </h2>
                                 <p>
                                     We may update these Terms from time to time.
@@ -101,3 +112,8 @@ export default function TermsPage() {
     );
 }
 
+// Add metadata export
+export const metadata = {
+    title: 'Privacy Policy | Undictify',
+    description: 'Terms and Conditions for Undictify - Your Digital Wellbeing Companion'
+};
