@@ -1,7 +1,6 @@
 // app/blog/[slug]/page.tsx
 import { getPostContent, getPostSlugs } from '@/lib/posts';
-import Image from 'next/image';
-import Link from 'next/link';
+import BoltLogo from '@/components/bolt-logo';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { Separator } from '@/components/ui/separator';
@@ -34,25 +33,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <main className="font-serif flex justify-center px-4 py-12 relative">
-      {/* Bolt Logo */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <Link 
-          href="https://bolt.new" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-200 group"
-        >
-          <Image
-            src="/white_circle_360x360.png"
-            alt="Powered by Bolt"
-            width={32}
-            height={32}
-            className="rounded-full group-hover:animate-spin transition-transform duration-200 sm:w-12 sm:h-12"
-            style={{ animationDuration: '2s' }}
-          />
-        </Link>
-      </div>
-
+      <BoltLogo />
       <article className="w-full max-w-3xl space-y-6">
         {/* Header */}
         <header className="space-y-2">
