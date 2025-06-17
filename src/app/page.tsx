@@ -1,5 +1,3 @@
-'use client';
-
 import Navbar from '@/app/(components)/navbar/navbar';
 import { Hero } from '@/app/(components)/hero/hero';
 import Footer from '@/app/(components)/footer/footer';
@@ -11,20 +9,17 @@ const navItems = [
 ];
 
 export default function Page() {
-
-
     return (
         <>
             <Navbar links={navItems} />
             <div className="min-h-screen text-foreground flex flex-col bg-black">
                 <main className="flex-1 flex flex-col items-center justify-center px-6">
                     <section className="text-center max-w-xl space-y-6">
-                    <Hero/>
+                        <Hero/>
                     </section>
                 </main>
                 <Footer />
             </div>
         </>
-
     );
 }
