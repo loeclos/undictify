@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { MoveRight, LayoutDashboard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {InteractiveHoverButton} from '@/components/ui/interactive-hover-button';
 import Link from 'next/link';
 
 function Hero() {
@@ -29,10 +30,12 @@ function Hero() {
             <div className="container mx-auto">
                 <div className="flex gap-8 mt-20  lg:pb-10 items-center justify-center flex-col">
                     <div>
-                        <Button variant="secondary" size="sm" className="gap-4">
-                            Read our launch article{' '}
-                            <MoveRight className="w-4 h-4" />
-                        </Button>
+                        <Link href={'/blog/undictify-launch'}>
+                            <Button variant="secondary" size="sm" className="gap-4">
+                                Read our launch article{' '}
+                                <MoveRight className="w-4 h-4" />
+                            </Button>
+                        </Link>
                     </div>
                     <div className="flex gap-4 flex-col">
                         <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tighter text-center font-regular">
@@ -86,9 +89,7 @@ function Hero() {
                         </Link>
 
                         <Link href={'/signup'}>
-                            <Button className="gap-4 cursor-pointer">
-                                Sign up here <MoveRight className="w-4 h-4" />
-                            </Button>
+                            <InteractiveHoverButton className="rounded-lg cursor-pointer" text='Sign up' />
                         </Link>
                     </div>
                 </div>
