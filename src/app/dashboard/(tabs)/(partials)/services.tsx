@@ -227,7 +227,7 @@ function Service({
                                         </div>
                                         <div className="w-full border-t border-dashed border-muted mt-4 pt-2 text-xs text-muted-foreground font-mono text-left">
                                             <span>
-                                                /// ACCESS LOG:{' '}
+                                                ACCESS LOG:{' '}
                                                 {new Date().toLocaleString()}
                                             </span>
                                         </div>
@@ -247,7 +247,7 @@ export default function Services() {
     const [userServices, setUserServices] = useState<ServiceType[]>([]);
     const [loading, setLoading] = useState(true);
     const fetchUserServices = async () => {
-        const { data, error } = await supabase
+        const { data } = await supabase
             .from('user_data')
             .select('services')
             .single();
@@ -259,7 +259,7 @@ export default function Services() {
     };
     useEffect(() => {
         fetchUserServices();
-    }, [supabase]);
+    }, [supabase, fetchUserServices]);
 
     return (
         <Dialog>

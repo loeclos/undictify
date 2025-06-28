@@ -4,8 +4,23 @@ import { TabsContent } from '@/components/ui/tabs';
 import { useEffect, useState } from 'react';
 import { createClient } from '@/utils/supabase/client';
 
+interface User {
+  user_id: string;
+  user_name: string;
+  pro_user: boolean;
+  services_connected: number;
+  joined_date: Date;
+  banned: boolean;
+  disabled_service: boolean;
+  blocking_since: Date | null;
+  average_media_time: number;
+  services: string[];
+  email: string;
+  sub_id: string;
+}
+
 export default function Main() {
-    const [userData, setUserData] = useState<any>(null);
+    const [userData, setUserData] = useState<User | null>(null);
 
     useEffect(() => {
         const supabase = createClient();
@@ -64,7 +79,7 @@ export default function Main() {
         <TabsContent value="streaks">
             <div className="p-6 bg-zinc-900 text-white rounded-lg shadow">
                 <h2 className="text-xl font-semibold  mb-4">
-                    Welcome, {userData.user_name != '' ? userData.user_name : 'User'}.
+                    Welcome, {userData && userData.user_name !== '' ? userData.user_name : 'User'}.
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="bg-zinc-800 p-4 rounded-lg">

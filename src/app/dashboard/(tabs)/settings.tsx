@@ -2,7 +2,6 @@
 
 import { TabsContent } from '@/components/ui/tabs';
 import CancelSubButton from './(partials)/cancel-sub';
-import { Button } from '@/components/ui/button';
 import Services from './(partials)/services';
 
 import { createClient } from '@/utils/supabase/client';
