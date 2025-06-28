@@ -1,9 +1,5 @@
 import type { Metadata } from 'next';
-import {
-    Space_Grotesk,
-    IBM_Plex_Mono,
-    DM_Sans,
-} from 'next/font/google';
+import { Space_Grotesk, IBM_Plex_Mono, DM_Sans } from 'next/font/google';
 import { Toaster } from '@/components/ui/sonner';
 import './globals.css';
 
@@ -39,8 +35,18 @@ export default function RootLayout({
             <body
                 className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} ${dm_sans.variable} antialiased dark selection:bg-zinc-800/50 selection:text-zinc-200 bg-black`}
             >
-                <Toaster />
                 {children}
+                <Toaster
+                    toastOptions={{
+                        classNames: {
+                            toast: '!text-md font-medium font-mono',
+                        },
+                    }}
+                    position="bottom-center"
+                    duration={5000}
+                    closeButton
+                    richColors
+                />
             </body>
         </html>
     );
