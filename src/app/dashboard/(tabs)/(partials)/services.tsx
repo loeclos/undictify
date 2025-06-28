@@ -24,7 +24,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import Image from 'next/image';
 import UnblockQuizDialog from './UnblockQuizDialog';
 import { createClient } from '@/utils/supabase/client';
-import { useEffect, useState, useId } from 'react';
+import { useEffect, useState, useId, useCallback } from 'react';
 import Link from 'next/link';
 import { toast } from 'sonner';
 
@@ -37,16 +37,6 @@ type ServiceType = {
     email: string;
     last_password: string;
     disabled: boolean;
-};
-
-const smthin = {
-    id: '31e01005-2a3f-4593-ba6d-5a0a7e64ac95',
-    name: 'Instagram',
-    icon: 'instagram',
-    username: 'John Doe',
-    email: '0bS5o@example.com',
-    last_password: 'password123',
-    disabled: false,
 };
 
 function Service({
@@ -246,7 +236,7 @@ export default function Services() {
     const supabase = createClient();
     const [userServices, setUserServices] = useState<ServiceType[]>([]);
     const [loading, setLoading] = useState(true);
-    const fetchUserServices = async () => {
+    const fetchUserServices = useCallback(async () => {
         const { data } = await supabase
             .from('user_data')
             .select('services')
@@ -256,7 +246,8 @@ export default function Services() {
         }
         setLoading(false);
         console.log(data);
-    };
+    }, []);
+
     useEffect(() => {
         fetchUserServices();
     }, [supabase, fetchUserServices]);
@@ -471,12 +462,6 @@ function AddServices() {
                                 <SelectGroup>
                                     <SelectItem value="instagram">
                                         Instagram
-                                    </SelectItem>
-                                    <SelectItem value="facebook">
-                                        Facebook
-                                    </SelectItem>
-                                    <SelectItem value="twitter">
-                                        Twitter
                                     </SelectItem>
                                 </SelectGroup>
                             </SelectContent>
